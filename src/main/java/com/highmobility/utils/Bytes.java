@@ -118,6 +118,10 @@ public class Bytes {
         return ByteBuffer.wrap(bytes).getFloat();
     }
 
+    public static byte[] floatToBytes(float value) {
+        return ByteBuffer.allocate(4).putFloat(value).array();
+    }
+
     public static int getInt(byte[] bytes) {
         if (bytes.length == 3) {
             int result = (bytes[0] & 0xff) << 16 | (bytes[1] & 0xff) << 8 | (bytes[2] & 0xff);
@@ -143,24 +147,40 @@ public class Bytes {
         return (int)value;
     }
 
-    public static byte[] intToTwoBytes(int value) throws IllegalArgumentException {
+    /**
+     *
+     * @param value the value converted to byte[]
+     * @param length the returned byte[] length
+     * @return the bytes representing the value
+     * @throws IllegalArgumentException when input is invalid
+     */
+    public static byte[] intToBytes(int value, int length) throws IllegalArgumentException {
         byte[] bytes = BigInteger.valueOf(value).toByteArray();
 
-        if (bytes.length > 2) {
-            throw new IllegalArgumentException();
-        }
-        else if (bytes.length == 2) {
+        if (bytes.length == length) {
             return bytes;
         }
+        else if (bytes.length < length) {
+            // put the bytes to last elements
+            byte[] withZeroBytes = new byte[length];
+
+            for (int i = 0; i < bytes.length; i++) {
+                withZeroBytes[length - 1 - i] = bytes[bytes.length - 1 - i];
+            }
+
+            return withZeroBytes;
+        }
         else {
-            byte[] result = new byte[2];
-            result[1] = bytes[0];
-            return result;
+            throw new IllegalArgumentException();
         }
     }
 
     public static boolean getBool(byte value) {
         return value == 0x00 ? false : true;
+    }
+
+    public static byte boolToByte(boolean value) {
+        return (byte) (value ? 0x01 : 0x00);
     }
 
     public static byte getByte(boolean value) {
@@ -257,6 +277,21 @@ public class Bytes {
             l >>= 8;
         }
         return result;
+    }
+
+    /**
+     * Trim the bytes to given length eg remove the elements that are over length
+     */
+    public static byte[] trimmedBytes(byte[] bytes, int length) {
+        if (bytes.length == length) return bytes;
+
+        byte[] trimmedBytes = new byte[length];
+
+        for (int i = 0; i < length; i++) {
+            trimmedBytes[i] = bytes[i];
+        }
+
+        return trimmedBytes;
     }
 
     public static void reverse(byte[] array) {
