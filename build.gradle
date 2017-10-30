@@ -1,3 +1,14 @@
+
+group 'com.highmobility'
+version '1.0'
+
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'idea'
+apply plugin: "com.jfrog.artifactory"
+
+sourceCompatibility = 1.7
+
 buildscript {
     repositories {
         jcenter()
@@ -7,10 +18,6 @@ buildscript {
         //Check for the latest version here: http://plugins.gradle.org/plugin/com.jfrog.artifactory
         classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4+"
     }
-}
-
-allprojects {
-    apply plugin: "com.jfrog.artifactory"
 }
 
 artifactory {
@@ -43,17 +50,6 @@ artifactory {
         }
     }
 }
-
-
-
-
-group 'com.highmobility'
-version '1.0'
-
-apply plugin: 'java'
-
-sourceCompatibility = 1.7
-
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
