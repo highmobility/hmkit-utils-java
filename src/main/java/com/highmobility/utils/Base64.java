@@ -2,6 +2,16 @@ package com.highmobility.utils;
 
 import java.io.ByteArrayOutputStream;
 
+/**
+ * https://github.com/box/box-java-sdk/blob/master/src/main/java/com/box/sdk/Base64.java
+ *
+ *
+ * Contains a method for performing base64 encoding.
+ *
+ * <p>This class is included so that we don't need to add a dependency on Apache Commons for base64 encoding.</p>
+ *
+ * <p>The code in this class was mostly taken from https://gist.github.com/EmilHernvall/953733#file-base64-java</p>
+ */
 public class Base64
 {
     public static String encode(byte[] data)
