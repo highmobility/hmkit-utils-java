@@ -1,3 +1,30 @@
+//
+// AutoAPI
+// Copyright (C) 2017 High-Mobility GmbH
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program. If not, see http://www.gnu.org/licenses/.
+//
+// Please inquire about commercial licensing options at
+// licensing@high-mobility.com
+//
+//
+//  BinaryInitable.swift
+//  AutoAPI
+//
+//  Copyright © 2017 High Mobility. All rights reserved.
+//
+
 package com.highmobility.utils;
 
 import java.io.UnsupportedEncodingException;
@@ -14,6 +41,12 @@ import java.util.UUID;
  */
 public class Bytes {
     final static char[] hexArray = "0123456789ABCDEF".toCharArray();
+    /**
+     * Transform a byte array into a hex string
+     *
+     * @param bytes The byte array
+     * @return The bytes in hex format.
+     */
     public static String hexFromBytes(byte[] bytes) {
         if (bytes == null) return "(null)";
         char[] hexChars = new char[bytes.length * 2];
@@ -26,6 +59,12 @@ public class Bytes {
         return new String(hexChars);
     }
 
+    /**
+     * Transform a hex string into a byte array
+     *
+     * @param s The hex string
+     * @return The hex string translated to bytes
+     */
     public static byte[] bytesFromHex(String s) {
         int len = s.length();
         byte[] data = new byte[len / 2];
@@ -38,6 +77,11 @@ public class Bytes {
         return data;
     }
 
+    /**
+     * Concatenates two byte arrays
+     *
+     * @return The concatenated byte array
+     */
     public static byte[] concatBytes(byte[] a, byte[] b) {
         int aLen = a.length;
         int bLen = b.length;
@@ -47,6 +91,11 @@ public class Bytes {
         return c;
     }
 
+    /**
+     * Concatenates a byte array and a byte
+     *
+     * @return The concatenated byte array
+     */
     public static byte[] concatBytes(byte[] a, byte b) {
         int aLen = a.length;
 
@@ -57,6 +106,13 @@ public class Bytes {
         return c;
     }
 
+    /**
+     * Set the bytes in an array
+     *
+     * @param inArray The array the bytes are set in
+     * @param toBytes The bytes that are set
+     * @param offset The offset of the set bytes
+     */
     public static void setBytes(byte[] inArray, byte[] toBytes, int offset) {
         for (int i = offset; i < offset + toBytes.length; i++) {
             if (i > inArray.length - 1) return;
@@ -102,6 +158,11 @@ public class Bytes {
         return true;
     }
 
+    /**
+     * Convert a byte array into UUID
+     * @param bytes The byte array
+     * @return The UUID
+     */
     public static UUID UUIDFromByteArray(byte[] bytes) {
         ByteBuffer bb = ByteBuffer.wrap(bytes);
         long high = bb.getLong();
@@ -110,6 +171,12 @@ public class Bytes {
         return uuid;
     }
 
+    /**
+     * Convert a mac string into byte array
+     *
+     * @param mac The mac address in String format eg FF:FF:FF:FF:FF:FF
+     * @return The mac address as bytes
+     */
     public static byte[] bytesFromMacString(String mac) {
         String[] macAddressParts = mac.split(":");
 
@@ -138,6 +205,11 @@ public class Bytes {
         return trimmedBytes;
     }
 
+    /**
+     * Reverse the byte array
+     *
+     * @param array The array to be reversed
+     */
     public static void reverse(byte[] array) {
         if (array == null) {
             return;

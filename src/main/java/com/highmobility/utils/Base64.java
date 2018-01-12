@@ -3,8 +3,8 @@ package com.highmobility.utils;
 import java.io.ByteArrayOutputStream;
 
 /**
+ * Taken from:
  * https://github.com/box/box-java-sdk/blob/master/src/main/java/com/box/sdk/Base64.java
- *
  *
  * Contains a method for performing base64 encoding.
  *
