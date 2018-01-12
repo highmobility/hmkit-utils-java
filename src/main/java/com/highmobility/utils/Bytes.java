@@ -175,7 +175,7 @@ public class Bytes {
      * Convert a mac string into byte array
      *
      * @param mac The mac address in String format eg FF:FF:FF:FF:FF:FF
-     * @return The mac address as bytes
+     * @return The
      */
     public static byte[] bytesFromMacString(String mac) {
         String[] macAddressParts = mac.split(":");
