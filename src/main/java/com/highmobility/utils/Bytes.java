@@ -19,21 +19,15 @@
 // licensing@high-mobility.com
 //
 //
-//  BinaryInitable.swift
-//  AutoAPI
+//  Bytes.java
+//  Utils
 //
 //  Copyright © 2017 High Mobility. All rights reserved.
 //
 
 package com.highmobility.utils;
 
-import java.io.UnsupportedEncodingException;
-import java.math.BigInteger;
 import java.nio.ByteBuffer;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.TimeZone;
 import java.util.UUID;
 
 /**
