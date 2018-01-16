@@ -1,6 +1,7 @@
 //
-// AutoAPI
-// Copyright (C) 2017 High-Mobility GmbH
+// HMKit Utils
+//
+// Copyright © 2017 High Mobility. All rights reserved.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -17,12 +18,6 @@
 //
 // Please inquire about commercial licensing options at
 // licensing@high-mobility.com
-//
-//
-//  Bytes.java
-//  Utils
-//
-//  Copyright © 2017 High Mobility. All rights reserved.
 //
 
 package com.highmobility.utils;
