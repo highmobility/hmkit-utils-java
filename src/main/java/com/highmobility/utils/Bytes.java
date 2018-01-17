@@ -30,6 +30,7 @@ import java.util.UUID;
  */
 public class Bytes {
     final static char[] hexArray = "0123456789ABCDEF".toCharArray();
+
     /**
      * Transform a byte array into a hex string
      *
@@ -39,7 +40,7 @@ public class Bytes {
     public static String hexFromBytes(byte[] bytes) {
         if (bytes == null) return "(null)";
         char[] hexChars = new char[bytes.length * 2];
-        for ( int j = 0; j < bytes.length; j++ ) {
+        for (int j = 0; j < bytes.length; j++) {
             int v = bytes[j] & 0xFF;
             hexChars[j * 2] = hexArray[v >>> 4];
             hexChars[j * 2 + 1] = hexArray[v & 0x0F];
@@ -69,6 +70,8 @@ public class Bytes {
     /**
      * Concatenates two byte arrays
      *
+     * @param a A byte array that will get concatenated
+     * @param b A byte array that will get concatenated
      * @return The concatenated byte array
      */
     public static byte[] concatBytes(byte[] a, byte[] b) {
@@ -83,6 +86,8 @@ public class Bytes {
     /**
      * Concatenates a byte array and a byte
      *
+     * @param a A byte array that will get concatenated
+     * @param b A byte array that will get concatenated
      * @return The concatenated byte array
      */
     public static byte[] concatBytes(byte[] a, byte b) {
@@ -100,7 +105,7 @@ public class Bytes {
      *
      * @param inArray The array the bytes are set in
      * @param toBytes The bytes that are set
-     * @param offset The offset of the set bytes
+     * @param offset  The offset of the set bytes
      */
     public static void setBytes(byte[] inArray, byte[] toBytes, int offset) {
         for (int i = offset; i < offset + toBytes.length; i++) {
@@ -112,10 +117,8 @@ public class Bytes {
     /**
      * Does this byte array begin with match array content?
      *
-     * @param source
-     *          Byte array to examine
-     * @param match
-     *          Byte array to locate in <code>source</code>
+     * @param source Byte array to examine
+     * @param match  Byte array to locate in <code>source</code>
      * @return true If the starting bytes are equal
      */
     public static boolean startsWith(byte[] source, byte[] match) {
@@ -125,12 +128,9 @@ public class Bytes {
     /**
      * Does this byte array begin with match array content?
      *
-     * @param source
-     *          Byte array to examine
-     * @param offset
-     *          An offset into the <code>source</code> array
-     * @param match
-     *          Byte array to locate in <code>source</code>
+     * @param source Byte array to examine
+     * @param offset An offset into the <code>source</code> array
+     * @param match  Byte array to locate in <code>source</code>
      * @return true If the starting bytes are equal
      */
     public static boolean startsWith(byte[] source, int offset, byte[] match) {
@@ -149,6 +149,7 @@ public class Bytes {
 
     /**
      * Convert a byte array into UUID
+     *
      * @param bytes The byte array
      * @return The UUID
      */
@@ -171,7 +172,7 @@ public class Bytes {
 
         // convert hex string to byte values
         byte[] macAddressBytes = new byte[6];
-        for(int i = 0; i < 6; i++){
+        for (int i = 0; i < 6; i++) {
             Integer hex = Integer.parseInt(macAddressParts[i], 16);
             macAddressBytes[i] = hex.byteValue();
         }
@@ -180,7 +181,11 @@ public class Bytes {
     }
 
     /**
-     * Trim the bytes to given length eg remove the elements that are over length
+     * Trim the bytes to given length eg remove the elements that are over length.
+     *
+     * @param bytes The bytes that will get trimmed.
+     * @param length The length of the trimmed byte array
+     * @return The trimmed byte array
      */
     public static byte[] trimmedBytes(byte[] bytes, int length) {
         if (bytes.length == length) return bytes;
