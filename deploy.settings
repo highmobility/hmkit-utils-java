@@ -1,5 +1,6 @@
 siteUrl = https://github.com/highmobility/hm-java-utils
 gitUrl = https://github.com/highmobility/hm-java-utils
+version = 1.1.4
 groupId = com.highmobility
 licenses = ['GPL-3.0'] // or something else
 id = hmkit-utils
