@@ -89,7 +89,7 @@ artifactory {
 
     publish {
         repository {
-            repoKey = properties.getProperty("gradle-release-local")
+            repoKey = properties.getProperty("artifactory_repository")
             username = properties.getProperty("artifactory_publisheruser")
             password = properties.getProperty("artifactory_publisherpassword")
             maven = true
