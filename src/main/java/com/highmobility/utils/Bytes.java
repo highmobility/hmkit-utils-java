@@ -25,9 +25,6 @@ package com.highmobility.utils;
 import java.nio.ByteBuffer;
 import java.util.UUID;
 
-/**
- * Created by ttiganik on 08/04/16.
- */
 public class Bytes {
     final static char[] hexArray = "0123456789ABCDEF".toCharArray();
 
