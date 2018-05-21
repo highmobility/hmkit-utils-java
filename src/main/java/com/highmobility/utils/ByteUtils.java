@@ -23,13 +23,10 @@
 package com.highmobility.utils;
 
 import java.nio.ByteBuffer;
+import java.util.Arrays;
 import java.util.UUID;
 
-/**
- * @deprecated use {@link ByteUtils} instead.
- */
-@Deprecated
-public class Bytes {
+public class ByteUtils {
     final static char[] hexArray = "0123456789ABCDEF".toCharArray();
 
     /**
