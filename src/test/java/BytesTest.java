@@ -14,12 +14,12 @@ import static junit.framework.TestCase.assertTrue;
 public class BytesTest {
     @Test public void serial() {
         DeviceSerial serial = new DeviceSerial("000000000000000000");
-        assertTrue(Arrays.equals(serial.getBytes(), new byte[] {0x00, 0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00 }));
+        assertTrue(Arrays.equals(serial.getByteArray(), new byte[] {0x00, 0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00 }));
     }
 
     @Test public void base64Input() {
         PublicKey serial = new PublicKey("K5mVFoq2rqKwAttWdIyPhwgVL80FNxkkNpgr/ca+ueq3JFn5iMLAMTJOKzG26qwtqrLO+z2sxxdwWNaItdBUWg==");
-        assertTrue(Arrays.equals(serial.getBytes(), ByteUtils.bytesFromHex("2B9995168AB6AEA2B002DB56748C8F8708152FCD0537192436982BFDC6BEB9EAB72459F988C2C031324E2B31B6EAAC2DAAB2CEFB3DACC7177058D688B5D0545A")));
+        assertTrue(Arrays.equals(serial.getByteArray(), ByteUtils.bytesFromHex("2B9995168AB6AEA2B002DB56748C8F8708152FCD0537192436982BFDC6BEB9EAB72459F988C2C031324E2B31B6EAAC2DAAB2CEFB3DACC7177058D688B5D0545A")));
     }
 
     @Test(expected = IllegalArgumentException.class)

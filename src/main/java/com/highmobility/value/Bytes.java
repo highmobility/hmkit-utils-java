@@ -6,12 +6,12 @@ import com.highmobility.utils.ByteUtils;
 import java.util.Arrays;
 
 public class Bytes {
-    byte[] bytes;
+    protected byte[] bytes;
 
     /**
      * @return The raw bytes.
      */
-    public byte[] getBytes() {
+    public byte[] getByteArray() {
         return bytes;
     }
 
@@ -73,7 +73,7 @@ public class Bytes {
      * @return The concatenated bytes.
      */
     public static Bytes concat(Bytes first, Bytes second) {
-        return new Bytes(ByteUtils.concatBytes(first.getBytes(), second.getBytes()));
+        return new Bytes(ByteUtils.concatBytes(first.getByteArray(), second.getByteArray()));
     }
 
     static byte[] stringToBytes(String input) {
