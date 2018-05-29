@@ -40,7 +40,7 @@ public class Bytes {
      * @param value The bytes in hex or Base64.
      */
     public Bytes(String value) {
-        this(stringToBytes(value));
+        this(ByteUtils.bytesFromHexOrBase64(value));
     }
 
     /**
@@ -76,22 +76,6 @@ public class Bytes {
         return new Bytes(ByteUtils.concatBytes(first.getByteArray(), second.getByteArray()));
     }
 
-    static byte[] stringToBytes(String input) {
-        byte[] result;
-        try {
-            result = ByteUtils.bytesFromHexCheckInput(input);
-            return result;
-        } catch (Exception e) {
-            try {
-                result = Base64.decode(input);
-                return result;
-            } catch (Exception e2) {
-                throw new IllegalArgumentException("Cannot parse the input string to a byte array" +
-                        ": " + e2.getMessage());
-            }
-        }
-    }
-
     @Override public String toString() {
         return ByteUtils.hexFromBytes(bytes);
     }
@@ -100,7 +84,7 @@ public class Bytes {
         try {
             return (obj instanceof Bytes && Arrays.equals(((Bytes) obj).bytes, bytes)) ||
                     (obj instanceof byte[] && Arrays.equals((byte[]) obj, bytes)) ||
-                    (obj instanceof String && Arrays.equals(stringToBytes((String) obj), bytes));
+                    (obj instanceof String && Arrays.equals(ByteUtils.bytesFromHexOrBase64((String) obj), bytes));
         } catch (Exception e) {
             return false;
         }

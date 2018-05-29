@@ -23,7 +23,6 @@
 package com.highmobility.utils;
 
 import java.nio.ByteBuffer;
-import java.util.Arrays;
 import java.util.UUID;
 
 public class ByteUtils {
@@ -103,6 +102,29 @@ public class ByteUtils {
         }
 
         return data;
+    }
+
+    /**
+     * Tries to parse input to a byte array. First tries to parse the input as hex, if fails then as
+     * base64. This is slower than the regular {@link #bytesFromHex(String)}.
+     *
+     * @param input The input, in hex or base64.
+     * @return The byte[] if parsing was successful/
+     */
+    public static byte[] bytesFromHexOrBase64(String input) {
+        byte[] result;
+        try {
+            result = ByteUtils.bytesFromHexCheckInput(input);
+            return result;
+        } catch (Exception e) {
+            try {
+                result = Base64.decode(input);
+                return result;
+            } catch (Exception e2) {
+                throw new IllegalArgumentException("Cannot parse the input string to a byte array" +
+                        ": " + e2.getMessage());
+            }
+        }
     }
 
     /**
