@@ -1,9 +1,9 @@
 package com.highmobility.value;
 
-import java.time.temporal.ValueRange;
+import com.highmobility.utils.Range;
 
 public class Permissions extends BytesWithLength {
-    private static final ValueRange range = ValueRange.of(0, 16);
+    private static final Range range = new Range(0, 16);
 
     /**
      * @param value The bytes in hex or Base64.
@@ -26,7 +26,7 @@ public class Permissions extends BytesWithLength {
         super();
     }
 
-    @Override ValueRange getExpectedRange() {
+    @Override Range getExpectedRange() {
         return range;
     }
 }

@@ -1,6 +1,7 @@
 package com.highmobility.value;
 
-import java.time.temporal.ValueRange;
+import com.highmobility.utils.ByteUtils;
+import com.highmobility.utils.Range;
 
 public class BytesWithLength extends Bytes {
     /**
@@ -25,8 +26,10 @@ public class BytesWithLength extends Bytes {
 
     void validateBytes(byte[] bytes) {
         if ((getExpectedLength() != -1 && getExpectedLength() != bytes.length) ||
-                (getExpectedRange() != null && getExpectedRange().isValidValue(bytes.length) == false)) {
-            throw new IllegalArgumentException("Invalid bytes for expected length: " + getLength());
+                (getExpectedRange() != null && getExpectedRange().contains(bytes.length) ==
+                        false)) {
+            throw new IllegalArgumentException(this.getClass() + ": invalid bytes " + ByteUtils.hexFromBytes
+                    (bytes) + " for expected length: " + getExpectedLength() + " range " + getExpectedRange());
         }
     }
 
@@ -34,7 +37,7 @@ public class BytesWithLength extends Bytes {
         return -1;
     }
 
-    ValueRange getExpectedRange() {
+    Range getExpectedRange() {
         return null;
     }
 }

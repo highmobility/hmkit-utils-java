@@ -32,6 +32,11 @@ public class BytesTest {
         new Permissions("0011334400113344001133440011334477");
     }
 
+    @Test
+    public void maxLengthNotThrow() {
+        new Permissions("1007FFFDFFEFFFFFFF03000000000000");
+    }
+
     @Test public void concat() {
         Bytes first = new Bytes("0101");
         Bytes second = new Bytes("0102");
