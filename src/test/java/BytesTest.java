@@ -49,4 +49,9 @@ public class BytesTest {
         assertTrue(bytes.equals(new byte[] {0x01, 0x01, 0x02}));
         assertTrue(bytes.equals("010102"));
     }
+
+    @Test public void testEmptyBytesLog() {
+        Bytes bytes = new Bytes(new byte[0]);
+        assertTrue(bytes.toString().equals("[]"));
+    }
 }
