@@ -3,6 +3,10 @@ package com.highmobility.value;
 import java.util.Calendar;
 import java.util.TimeZone;
 
+/**
+ * @deprecated This class has moved to crypto package.
+ */
+@Deprecated
 public class HMCalendar extends BytesWithLength {
     Calendar calendar;
 
@@ -58,7 +62,7 @@ public class HMCalendar extends BytesWithLength {
         return bytes;
     }
 
-    @Override int getExpectedLength() {
+    @Override protected int getExpectedLength() {
         return 5;
     }
 }

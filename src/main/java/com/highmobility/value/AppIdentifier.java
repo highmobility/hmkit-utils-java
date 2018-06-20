@@ -1,5 +1,9 @@
 package com.highmobility.value;
 
+/**
+ * @deprecated This class has moved to crypto package.
+ */
+@Deprecated
 public class AppIdentifier extends BytesWithLength {
     /**
      * @param value The bytes in hex or Base64.
@@ -15,7 +19,7 @@ public class AppIdentifier extends BytesWithLength {
         super(bytes);
     }
 
-    @Override int getExpectedLength() {
+    @Override protected int getExpectedLength() {
         return 12;
     }
 }

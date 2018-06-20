@@ -3,6 +3,18 @@ package com.highmobility.utils;
 public class Range {
     private int start, range, end;
 
+    public int getStart() {
+        return start;
+    }
+
+    public int getRange() {
+        return range;
+    }
+
+    public int getEnd() {
+        return end;
+    }
+
     public Range(int start, int range){
         this.start = start;
         this.range = range;

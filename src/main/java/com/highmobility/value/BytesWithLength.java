@@ -33,11 +33,11 @@ public class BytesWithLength extends Bytes {
         }
     }
 
-    int getExpectedLength() {
+    protected int getExpectedLength() {
         return -1;
     }
 
-    Range getExpectedRange() {
+    protected Range getExpectedRange() {
         return null;
     }
 }

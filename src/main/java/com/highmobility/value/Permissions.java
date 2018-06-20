@@ -2,6 +2,10 @@ package com.highmobility.value;
 
 import com.highmobility.utils.Range;
 
+/**
+ * @deprecated This class has moved to crypto package.
+ */
+@Deprecated
 public class Permissions extends BytesWithLength {
     private static final Range range = new Range(0, 16);
 
@@ -26,7 +30,7 @@ public class Permissions extends BytesWithLength {
         super();
     }
 
-    @Override Range getExpectedRange() {
+    @Override protected Range getExpectedRange() {
         return range;
     }
 }

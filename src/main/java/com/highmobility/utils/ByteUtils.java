@@ -177,6 +177,17 @@ public class ByteUtils {
     }
 
     /**
+     * Test whether a bit is set in a byte.
+     *
+     * @param fromByte The byte.
+     * @param bitIndex The bit location.
+     * @return True if the bit is 1.
+     */
+    public static boolean getBit(byte fromByte, int bitIndex) {
+        return ((fromByte >> bitIndex) & 1) == 1;
+    }
+
+    /**
      * Does this byte array begin with match array content?
      *
      * @param source Byte array to examine
