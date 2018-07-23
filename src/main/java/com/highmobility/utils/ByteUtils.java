@@ -78,16 +78,15 @@ public class ByteUtils {
 
         boolean[] hexArrayContains = new boolean[2];
         for (int i = 0; i < len; i += 2) {
-
+            Character hexFirstCharacter = Character.toUpperCase(s.charAt(i));
+            Character hexSecondCharacter = Character.toUpperCase(s.charAt(i + 1));
             for (int j = 0; j < hexArray.length; j++) {
 
-                if (hexArrayContains[0] == false && Character.toUpperCase(s.charAt(i)) ==
-                        hexArray[j]) {
+                if (hexArrayContains[0] == false && hexFirstCharacter == hexArray[j]) {
                     hexArrayContains[0] = true;
                 }
 
-                if (hexArrayContains[1] == false && Character.toUpperCase(s.charAt(i + 1)) ==
-                        hexArray[j]) {
+                if (hexArrayContains[1] == false && hexSecondCharacter == hexArray[j]) {
                     hexArrayContains[1] = true;
                 }
             }
@@ -99,16 +98,17 @@ public class ByteUtils {
                 hexArrayContains[1] = false;
             }
 
-            data[i / 2] = (byte) ((Character.digit(s.charAt(i), 16) << 4) + Character
-                    .digit(s.charAt(i + 1), 16));
+            data[i / 2] = (byte) ((Character.digit(hexFirstCharacter, 16) << 4) + Character
+                    .digit(hexSecondCharacter, 16));
         }
 
         return data;
     }
 
     /**
-     * Tries to parse input to a byte array. First tries to parse the input as hex, if fails then as
-     * base64. This is slower than the regular {@link #bytesFromHex(String)}.
+     * Tries to parse input to a byte array. First tries to parse the input as hex, then as base64.
+     * Base64 string is detected quite fast but in case of hex it verifies all of the string's
+     * characters. {@link #bytesFromHex(String)} is faster for strings that are known to be hex.
      *
      * @param input The input, in hex or base64.
      * @return The byte[] if parsing was successful/
