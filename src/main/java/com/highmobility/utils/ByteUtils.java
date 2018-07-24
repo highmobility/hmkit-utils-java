@@ -29,9 +29,9 @@ public class ByteUtils {
     final static char[] hexArray = "0123456789ABCDEF".toCharArray();
 
     /**
-     * Transform a byte array into a hex string
+     * Transform a byte array into a hex string.
      *
-     * @param bytes The byte array
+     * @param bytes The byte array.
      * @return The bytes in hex format.
      */
     public static String hexFromBytes(byte[] bytes) {
@@ -49,10 +49,10 @@ public class ByteUtils {
     }
 
     /**
-     * Transform a hex string into a byte array
+     * Transform a hex string into a byte array.
      *
-     * @param s The hex string
-     * @return The hex string translated to bytes
+     * @param s The hex string.
+     * @return The hex string translated to bytes.
      */
     public static byte[] bytesFromHex(String s) {
         int len = s.length();
@@ -69,8 +69,8 @@ public class ByteUtils {
     /**
      * Transform a hex string into a byte array. Also checks if the input is in hex characters.
      *
-     * @param s The hex string
-     * @return The hex string translated to bytes
+     * @param s The hex string.
+     * @return The hex string translated to bytes.
      */
     public static byte[] bytesFromHexCheckInput(String s) {
         int len = s.length();
@@ -111,7 +111,7 @@ public class ByteUtils {
      * characters. {@link #bytesFromHex(String)} is faster for strings that are known to be hex.
      *
      * @param input The input, in hex or base64.
-     * @return The byte[] if parsing was successful/
+     * @return The byte[] if parsing was successful.
      */
     public static byte[] bytesFromHexOrBase64(String input) {
         byte[] result;
@@ -130,11 +130,11 @@ public class ByteUtils {
     }
 
     /**
-     * Concatenates two byte arrays
+     * Concatenates two byte arrays.
      *
-     * @param a A byte array that will get concatenated
-     * @param b A byte array that will get concatenated
-     * @return The concatenated byte array
+     * @param a A byte array that will get concatenated.
+     * @param b A byte array that will get concatenated.
+     * @return The concatenated byte array.
      */
     public static byte[] concatBytes(byte[] a, byte[] b) {
         int aLen = a.length;
@@ -146,11 +146,11 @@ public class ByteUtils {
     }
 
     /**
-     * Concatenates a byte array and a byte
+     * Concatenates a byte array and a byte.
      *
-     * @param a A byte array that will get concatenated
-     * @param b A byte array that will get concatenated
-     * @return The concatenated byte array
+     * @param a A byte array that will get concatenated.
+     * @param b A byte array that will get concatenated.
+     * @return The concatenated byte array.
      */
     public static byte[] concatBytes(byte[] a, byte b) {
         int aLen = a.length;
@@ -163,11 +163,11 @@ public class ByteUtils {
     }
 
     /**
-     * Set the bytes in an array
+     * Set the bytes in an array.
      *
-     * @param inArray The array the bytes are set in
-     * @param toBytes The bytes that are set
-     * @param offset  The offset of the set bytes
+     * @param inArray The array the bytes are set in.
+     * @param toBytes The bytes that are set.
+     * @param offset  The offset of the set bytes.
      */
     public static void setBytes(byte[] inArray, byte[] toBytes, int offset) {
         for (int i = offset; i < offset + toBytes.length; i++) {
@@ -221,10 +221,10 @@ public class ByteUtils {
     }
 
     /**
-     * Convert a byte array into UUID
+     * Convert a byte array into UUID.
      *
-     * @param bytes The byte array
-     * @return The UUID
+     * @param bytes The byte array.
+     * @return The UUID.
      */
     public static UUID UUIDFromByteArray(byte[] bytes) {
         ByteBuffer bb = ByteBuffer.wrap(bytes);
@@ -257,8 +257,8 @@ public class ByteUtils {
      * Trim the bytes to given length eg remove the elements that are over length.
      *
      * @param bytes  The bytes that will get trimmed.
-     * @param length The length of the trimmed byte array
-     * @return The trimmed byte array
+     * @param length The length of the trimmed byte array.
+     * @return The trimmed byte array.
      */
     public static byte[] trimmedBytes(byte[] bytes, int length) {
         if (bytes.length == length) return bytes;
@@ -273,9 +273,9 @@ public class ByteUtils {
     }
 
     /**
-     * Reverse the byte array
+     * Reverse the byte array.
      *
-     * @param array The array to be reversed
+     * @param array The array to be reversed.
      */
     public static void reverse(byte[] array) {
         if (array == null) {
