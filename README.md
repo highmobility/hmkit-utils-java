@@ -12,7 +12,7 @@ repositories {
 }
 
 dependencies {
-  implementation('com.highmobility:hmkit-utils:1.1.4')
+  implementation('com.highmobility:hmkit-utils:1.3.0')
 }
 ```
 
@@ -20,7 +20,7 @@ Find the latest version name in https://bintray.com/high-mobility/maven/hmkit-ut
 
 ### Usage
 
-Convenience methods are in Bytes class as static methods. For example you could use
+Convenience methods are in ByteUtils class as static methods. For example you could use
 
 ```java
 public static String hexFromBytes(byte[] bytes)
