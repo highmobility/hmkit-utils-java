@@ -108,7 +108,7 @@ artifactory {
 
     publish {
         repository {
-            repoKey = artifact.repo
+            repoKey = project.hasProperty("repo") ? project.property("repo") : artifact.repo
             username = System.properties['hmArtifactoryPublishUser']
             password = System.properties['hmArtifactoryPublishPassword']
             maven = true
