@@ -1,6 +1,7 @@
 package com.highmobility.utils;
 
 import java.io.ByteArrayOutputStream;
+import java.util.Arrays;
 
 /**
  * Taken from:
@@ -68,12 +69,19 @@ public class Base64
         return buffer.toString();
     }
 
+    public static String encodeUrlSafe(byte[] data) {
+        return encode(data)
+                .replace("/", "_")
+                .replace("+","-")
+                .replace("=", "");
+    }
+
     public static byte[] decode(String data)
     {
         byte[] bytes = data.getBytes();
         ByteArrayOutputStream buffer = new ByteArrayOutputStream();
         for (int i = 0; i < bytes.length; ) {
-            int b = 0;
+            int b;
             if (ints[bytes[i]] != -1) {
                 b = (ints[bytes[i]] & 0xFF) << 18;
             }
@@ -106,5 +114,20 @@ public class Base64
             i += 4;
         }
         return buffer.toByteArray();
+    }
+
+    public static byte[] decodeUrlSafe(String urlSafeBase64String) {
+        String base64 = urlSafeBase64String
+                .replace("_", "/")
+                .replace("-","+");
+
+        if (base64.length() % 4 != 0) {
+            int count = 4 - base64.length() % 4;
+            char[] chars = new char[count];
+            Arrays.fill(chars, '=');
+            base64 += new String(chars);
+        }
+
+        return decode(base64);
     }
 }

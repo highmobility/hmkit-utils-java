@@ -36,6 +36,10 @@ public class Bytes {
         return Base64.encode(bytes);
     }
 
+    public String getBase64UrlSafe() {
+        return Base64.encodeUrlSafe(bytes);
+    }
+
     /**
      * @param value The bytes in hex or Base64.
      */
