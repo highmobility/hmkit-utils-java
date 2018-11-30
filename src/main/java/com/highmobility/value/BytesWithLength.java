@@ -4,12 +4,18 @@ import com.highmobility.utils.ByteUtils;
 import com.highmobility.utils.Range;
 
 public class BytesWithLength extends Bytes {
+
+    public BytesWithLength(Bytes value) {
+        super(value.getByteArray());
+        validateBytes();
+    }
+
     /**
      * @param value The bytes in hex or Base64.
      */
     public BytesWithLength(String value) {
         super(value);
-        validateBytes(bytes);
+        validateBytes();
     }
 
     /**
@@ -17,14 +23,14 @@ public class BytesWithLength extends Bytes {
      */
     public BytesWithLength(byte[] bytes) {
         super(bytes);
-        validateBytes(bytes);
+        validateBytes();
     }
 
     public BytesWithLength() {
         super();
     }
 
-    void validateBytes(byte[] bytes) {
+    void validateBytes() {
         if ((getExpectedLength() != -1 && getExpectedLength() != bytes.length) ||
                 (getExpectedRange() != null && getExpectedRange().contains(bytes.length) ==
                         false)) {
