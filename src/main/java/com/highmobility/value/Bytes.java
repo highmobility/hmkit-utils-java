@@ -3,9 +3,10 @@ package com.highmobility.value;
 import com.highmobility.utils.Base64;
 import com.highmobility.utils.ByteUtils;
 
+import java.util.AbstractList;
 import java.util.Arrays;
 
-public class Bytes {
+public class Bytes extends AbstractList<Byte> {
     protected byte[] bytes;
 
     /**
@@ -36,8 +37,21 @@ public class Bytes {
         return Base64.encode(bytes);
     }
 
+    /**
+     * @return The bytes in URL safe Base64.
+     */
     public String getBase64UrlSafe() {
         return Base64.encodeUrlSafe(bytes);
+    }
+
+    /**
+     * Concatenate a bytes to self.
+     *
+     * @param bytes The concatenated bytes.
+     * @return The new bytes.
+     */
+    public Bytes concat(Bytes bytes) {
+        return Bytes.concat(this, bytes);
     }
 
     /**
@@ -60,16 +74,6 @@ public class Bytes {
     }
 
     /**
-     * Concatenate a bytes to self.
-     *
-     * @param bytes The concatenated bytes.
-     * @return The new bytes.
-     */
-    public Bytes concat(Bytes bytes) {
-        return Bytes.concat(this, bytes);
-    }
-
-    /**
      * Concatenate two bytes.
      *
      * @param first  The first bytes.
@@ -79,6 +83,18 @@ public class Bytes {
     public static Bytes concat(Bytes first, Bytes second) {
         return new Bytes(ByteUtils.concatBytes(first.getByteArray(), second.getByteArray()));
     }
+
+    // MARK: AbstractList
+
+    @Override public int size() {
+        return bytes.length;
+    }
+
+    @Override public Byte get(int index) {
+        return bytes[index];
+    }
+
+    // MARK: Object
 
     @Override public String toString() {
         return ByteUtils.hexFromBytes(bytes);
@@ -90,7 +106,7 @@ public class Bytes {
                     (obj instanceof byte[] && Arrays.equals((byte[]) obj, bytes)) ||
                     (obj instanceof String && Arrays.equals(ByteUtils.bytesFromHexOrBase64((String) obj), bytes));
         } catch (Exception e) {
-            return false;
+            return super.equals(obj);
         }
     }
 }

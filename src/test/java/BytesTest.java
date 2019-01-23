@@ -38,4 +38,14 @@ public class BytesTest {
         Bytes serial = new Bytes("22AAFF");
         assertTrue(Arrays.equals(serial.getByteArray(), ByteUtils.bytesFromHex("22AAFF")));
     }
+
+    @Test public void doesNotThrowOnLastItemAccess() {
+        Bytes bytes = new Bytes("0102");
+        bytes.get(1);
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class) public void throwsOnOverAccess() {
+        Bytes bytes = new Bytes("0102");
+        bytes.get(2);
+    }
 }
