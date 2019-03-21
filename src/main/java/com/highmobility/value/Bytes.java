@@ -69,8 +69,32 @@ public class Bytes extends AbstractList<Byte> {
         this.bytes = bytes;
     }
 
+    public Bytes(Bytes bytes) {
+        this.bytes = bytes.getByteArray();
+    }
+
     public Bytes() {
         this.bytes = new byte[0];
+    }
+
+    public Bytes(int length) {
+        this.bytes = new byte[length];
+    }
+
+    public void set(int position, byte value) {
+        this.bytes[position] = value;
+    }
+
+    public void set(int position, Bytes bytes) {
+        set(position, bytes.getByteArray());
+    }
+
+    public void set(int position, byte[] bytes) {
+        ByteUtils.setBytes(this.bytes, bytes, position);
+    }
+
+    public Bytes getRange(int from, int to) {
+        return new Bytes(Arrays.copyOfRange(getByteArray(), from, to));
     }
 
     /**
