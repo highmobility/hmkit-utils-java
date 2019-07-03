@@ -4,13 +4,15 @@ buildscript {
     }
     dependencies {
         //Check for the latest version here: http://plugins.gradle.org/plugin/com.jfrog.artifactory
-        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.5.0"
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1+'
-        classpath 'com.github.dcendents:android-maven-plugin:1+'
+        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.9.7"
+        /*classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1+'
+        classpath 'com.github.dcendents:android-maven-plugin:1+'*/
     }
 }
 
-apply plugin: 'java'
+plugins {
+    id "java"
+}
 
 def artifact = new Properties()
 artifact.load(new FileInputStream("$projectDir/deploy.settings"))
@@ -20,24 +22,18 @@ version=artifact.version
 
 sourceCompatibility = 1.8
 
-repositories {
-    jcenter()
-}
-
 dependencies {
     testImplementation 'junit:junit:4.12'
 }
 
 // deploy
 
-apply plugin: 'maven'
-apply plugin: 'com.jfrog.bintray'
+/*apply plugin: 'maven'
+apply plugin: 'com.jfrog.bintray'*/
 apply plugin: 'com.jfrog.artifactory'
 
-version=artifact.version
-group=artifact.groupId
 
-install {
+/*install {
     repositories.mavenInstaller {
         pom.project {
             packaging 'jar'
@@ -79,7 +75,7 @@ bintray {
             name = artifact.version
         }
     }
-}
+}*/
 
 task sourcesJar(type: Jar) {
     from sourceSets.main.java.srcDirs
@@ -95,10 +91,6 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 artifacts {
     archives javadocJar
     archives sourcesJar
-}
-
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
 }
 
 // artifactory
