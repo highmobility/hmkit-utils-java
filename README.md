@@ -12,7 +12,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.highmobility:hmkit-utils:1.4.3'
+  implementation 'com.highmobility:hmkit-utils:1.4.4-dev'
 }
 ```
 
