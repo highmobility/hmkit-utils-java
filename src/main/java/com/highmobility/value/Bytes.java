@@ -70,7 +70,7 @@ public class Bytes extends AbstractList<Byte> {
     }
 
     public Bytes(Bytes bytes) {
-        this.bytes = bytes.getByteArray();
+        this(bytes.getByteArray());
     }
 
     public Bytes() {
@@ -81,16 +81,19 @@ public class Bytes extends AbstractList<Byte> {
         this.bytes = new byte[length];
     }
 
-    public void set(int position, byte value) {
+    public Bytes set(int position, byte value) {
         this.bytes[position] = value;
+        return this;
     }
 
-    public void set(int position, Bytes bytes) {
+    public Bytes set(int position, Bytes bytes) {
         set(position, bytes.getByteArray());
+        return this;
     }
 
-    public void set(int position, byte[] bytes) {
+    public Bytes set(int position, byte[] bytes) {
         ByteUtils.setBytes(this.bytes, bytes, position);
+        return this;
     }
 
     public Bytes getRange(int from, int to) {
