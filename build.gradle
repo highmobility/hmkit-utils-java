@@ -2,6 +2,7 @@ buildscript {
     repositories {
         jcenter()
     }
+
     dependencies {
         //Check for the latest version here: http://plugins.gradle.org/plugin/com.jfrog.artifactory
         classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.9.7"
@@ -13,7 +14,12 @@ plugins {
     id "java"
     id "com.jfrog.bintray" version "1.8.4"
     id "maven"
-    id "com.jfrog.artifactory"
+}
+
+apply plugin: 'com.jfrog.artifactory'
+
+repositories {
+    jcenter()
 }
 
 def artifact = new Properties()
