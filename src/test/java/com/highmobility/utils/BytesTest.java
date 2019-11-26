@@ -1,4 +1,5 @@
-import com.highmobility.utils.ByteUtils;
+package com.highmobility.utils;
+
 import com.highmobility.value.Bytes;
 
 import org.junit.Test;
