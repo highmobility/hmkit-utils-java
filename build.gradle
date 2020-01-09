@@ -1,32 +1,14 @@
-buildscript {
-    repositories {
-        jcenter()
-    }
-
-    dependencies {
-        //Check for the latest version here: http://plugins.gradle.org/plugin/com.jfrog.artifactory
-        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.9.7"
-        classpath 'com.github.dcendents:android-maven-plugin:1+'
-    }
-}
-
 plugins {
     id "java"
+    id "com.jfrog.artifactory" version "4.13.0"
     id "com.jfrog.bintray" version "1.8.4"
-    id "maven"
-}
-
-apply plugin: 'com.jfrog.artifactory'
-
-repositories {
-    jcenter()
 }
 
 def artifact = new Properties()
 artifact.load(new FileInputStream("$projectDir/deploy.settings"))
 
-group=artifact.groupId
-version=artifact.version
+group = artifact.groupId
+version = artifact.version
 
 sourceCompatibility = 1.8
 
@@ -35,59 +17,18 @@ dependencies {
 }
 
 // deploy
+//
 
-install {
-    repositories.mavenInstaller {
-        pom.project {
-            packaging 'jar'
-            groupId artifact.groupId
-            artifactId artifact.id
-            version artifact.version
-            name artifact.id // pom.project.name must be same as bintray.pkg.name
-            url artifact.siteUrl
-            inceptionYear '2018'
-            licenses {
-                license { // HARDCODED
-                    name 'GPL-3.0'
-                    url 'https://www.gnu.org/licenses/gpl.txt'
-                    distribution 'repo'
-                }
-            }
-            scm {
-                connection artifact.gitUrl
-                developerConnection artifact.gitUrl
-                url artifact.siteUrl
-            }
-        }
-    }
-}
-
-bintray {
-    user = System.properties['hmBintrayUser']
-    key = System.properties['hmBintrayApikey']
-
-    configurations = ['archives']
-    pkg {
-        repo = "maven"
-        name = artifact.id
-        websiteUrl = artifact.siteUrl
-        vcsUrl = artifact.gitUrl
-        licenses = artifact.licenses
-        publish = true
-        version {
-            name = artifact.version
-        }
-    }
-}
+// add the sources and doc artifacts
 
 task sourcesJar(type: Jar) {
     from sourceSets.main.java.srcDirs
-    archiveClassifier.set('sources')
+    classifier = 'sources'
 }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
-    archiveClassifier.set('javadoc')
     from javadoc.destinationDir
+    classifier = 'javadoc'
 }
 
 artifacts {
@@ -98,20 +39,38 @@ artifacts {
 // artifactory
 
 artifactory {
-    contextUrl = System.properties['hmArtifactoryUrl']
+    contextUrl = hmArtifactoryUrl
 
     publish {
         repository {
             repoKey = project.hasProperty("repo") ? project.property("repo") : artifact.repo
-            username = System.properties['hmArtifactoryPublishUser']
-            password = System.properties['hmArtifactoryPublishPassword']
-            maven = true
+            username = hmArtifactoryPublishUser
+            password = hmArtifactoryPublishPassword
         }
 
         defaults {
             publishConfigs('archives', 'published')
-            publishPom = true
             publishIvy = false
+        }
+    }
+}
+
+// bintray
+
+bintray {
+    user = hmBintrayUser
+    key = hmBintrayApikey
+
+    configurations = ['archives']
+    pkg {
+        repo = "maven"
+        name = artifact.id
+        websiteUrl = artifact.siteUrl
+        vcsUrl = artifact.gitUrl
+        licenses = artifact.licenses
+
+        version {
+            name = artifact.version
         }
     }
 }
