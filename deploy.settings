@@ -1,7 +1,7 @@
 siteUrl = https://github.com/highmobility/hm-java-utils
 gitUrl = https://github.com/highmobility/hm-java-utils
-version = 1.4.3
+version = 1.4.4
 groupId = com.highmobility
-licenses = ['GPL-3.0']
+licenses = ['MIT']
 id = hmkit-utils
 repo = gradle-dev-local

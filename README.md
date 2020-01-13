@@ -1,6 +1,7 @@
 # HMKit Utils
 
-This repository contains some of the more commonly used byte utility methods used in HM java libraries. It also contains a Base64 implementation.
+This repository contains some of the more commonly used byte utility methods used our libraries. It
+also contains a Base64 implementation.
 
 ### Install
 
@@ -12,7 +13,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.highmobility:hmkit-utils:1.4.3'
+  implementation 'com.highmobility:hmkit-utils:1.4.4'
 }
 ```
 
