@@ -50,6 +50,16 @@ public class ByteUtils {
     }
 
     /**
+     * Transform a byte into a hex string.
+     *
+     * @param value The byte value
+     * @return The hex string.
+     */
+    public static String hexFromByte(byte value) {
+        return hexFromBytes(new byte[]{value});
+    }
+
+    /**
      * Transform a hex string into a byte array.
      *
      * @param s The hex string.
