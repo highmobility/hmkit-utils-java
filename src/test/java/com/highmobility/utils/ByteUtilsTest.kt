@@ -23,12 +23,12 @@
  */
 package com.highmobility.utils;
 
-import junit.framework.Assert.assertTrue
-
+import org.junit.Assert.assertTrue
 import org.junit.Test;
 
 class ByteUtilsTest {
-    @Test fun hexFromByte() {
+    @Test
+    fun hexFromByte() {
         val hex = ByteUtils.hexFromByte(0x01)
         assertTrue(hex == "01")
     }
