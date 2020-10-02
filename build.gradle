@@ -42,3 +42,5 @@ compileTestKotlin {
         jvmTarget = "1.8"
     }
 }
+
+apply from: "https://raw.githubusercontent.com/tonisives/tools/master/scripts/test-shell-logging.gradle"
