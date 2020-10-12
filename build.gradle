@@ -19,12 +19,6 @@ repositories {
 
 sourceCompatibility = 1.8
 
-def deploy = new Properties()
-deploy.load(new FileInputStream("$projectDir/deploy.settings"))
-
-group = deploy.groupId
-version = deploy.version
-
 dependencies {
     testImplementation 'junit:junit:4.12'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
