@@ -1,6 +1,6 @@
 siteUrl = https://github.com/highmobility/hmkit-utils-java
 gitUrl = https://github.com/highmobility/hmkit-utils-java
-version = 1.4.5-dev
 groupId = com.highmobility
-licenses = MIT
+licenseName = MIT
+licenseUrl = https://opensource.org/licenses/MIT
 id = hmkit-utils
