@@ -1,3 +1,0 @@
-def deploy = new Properties()
-deploy.load(new FileInputStream("deploy.settings"))
-rootProject.name = deploy.id

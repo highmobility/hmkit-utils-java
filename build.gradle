@@ -11,6 +11,11 @@ buildscript {
 
 apply plugin: "java-library"
 apply plugin: 'kotlin'
+apply from: "deploy.gradle"
+
+ext.ver = [
+        "hmkit-utils"       : "1.4.5-dev"
+]
 
 repositories {
     jcenter()
