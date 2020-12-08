@@ -13,6 +13,8 @@ plugins {
 }
 
 apply plugin: "java-library"
+apply plugin: 'kotlin'
+apply from: "deploy.gradle"
 
 repositories {
     jcenter()
