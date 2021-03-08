@@ -21,10 +21,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.highmobility.utils;
+package com.highmobility.utils
 
 import org.junit.Assert.assertTrue
-import org.junit.Test;
+import org.junit.Test
 
 class ByteUtilsTest {
     @Test
