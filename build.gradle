@@ -9,15 +9,15 @@ buildscript {
     }
 }
 
+ext.ver = [
+        "hmkit-utils": "1.4.5"
+]
+
 apply plugin: "java-library"
 apply plugin: 'kotlin'
 apply from: "deploy.gradle"
 apply from: "https://raw.githubusercontent.com/tonisives/tools/master/gradle/deploy-java-mavenCentral.gradle"
 apply from: "https://raw.githubusercontent.com/tonisives/tools/master/gradle/test-shell-logging.gradle"
-
-ext.ver = [
-        "hmkit-utils": "1.4.5"
-]
 
 repositories {
     jcenter()
