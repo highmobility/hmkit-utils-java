@@ -89,8 +89,8 @@ public class ByteUtils {
 
         boolean[] hexArrayContains = new boolean[2];
         for (int i = 0; i < len; i += 2) {
-            Character hexFirstCharacter = Character.toUpperCase(s.charAt(i));
-            Character hexSecondCharacter = Character.toUpperCase(s.charAt(i + 1));
+            char hexFirstCharacter = Character.toUpperCase(s.charAt(i));
+            char hexSecondCharacter = Character.toUpperCase(s.charAt(i + 1));
             for (int j = 0; j < hexArray.length; j++) {
 
                 if (hexArrayContains[0] == false && hexFirstCharacter == hexArray[j]) {
@@ -257,8 +257,8 @@ public class ByteUtils {
         // convert hex string to byte values
         byte[] macAddressBytes = new byte[6];
         for (int i = 0; i < 6; i++) {
-            Integer hex = Integer.parseInt(macAddressParts[i], 16);
-            macAddressBytes[i] = hex.byteValue();
+            int hex = Integer.parseInt(macAddressParts[i], 16);
+            macAddressBytes[i] = (byte) hex;
         }
 
         return macAddressBytes;
@@ -276,9 +276,7 @@ public class ByteUtils {
 
         byte[] trimmedBytes = new byte[length];
 
-        for (int i = 0; i < length; i++) {
-            trimmedBytes[i] = bytes[i];
-        }
+        if (length >= 0) System.arraycopy(bytes, 0, trimmedBytes, 0, length);
 
         return trimmedBytes;
     }

@@ -65,11 +65,13 @@ public class BytesTest {
 
     @Test public void doesNotThrowOnLastItemAccess() {
         Bytes bytes = new Bytes("0102");
+        //noinspection ResultOfMethodCallIgnored
         bytes.get(1);
     }
 
     @Test(expected = IndexOutOfBoundsException.class) public void throwsOnOverAccess() {
         Bytes bytes = new Bytes("0102");
+        //noinspection ResultOfMethodCallIgnored
         bytes.get(2);
     }
 }
