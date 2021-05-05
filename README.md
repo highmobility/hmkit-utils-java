@@ -5,11 +5,11 @@ also contains a Base64 implementation.
 
 ### Install
 
-Releases are pushed to jcenter. To include hmkit-oem in your project, add to build.gradle:
+Releases are pushed to mavenCentral. To include hmkit-oem in your project, add to build.gradle:
 
 ```
 repositories {
-  jcenter()
+  mavenCentral()
 }
 
 dependencies {
@@ -17,7 +17,7 @@ dependencies {
 }
 ```
 
-Find the latest version name in https://bintray.com/high-mobility/maven/hmkit-utils
+Find the latest version names in [mavenCentral](https://search.maven.org/search?q=g:com.high-mobility)
 
 ### Usage
 
