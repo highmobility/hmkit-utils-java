@@ -5,7 +5,7 @@ also contains a Base64 implementation.
 
 ### Install
 
-To include hmkit-utils in your project, add to build.gradle:
+Releases are pushed to mavenCentral. To include hmkit-oem in your project, add to build.gradle:
 
 ```
 repositories {
@@ -17,7 +17,7 @@ dependencies {
 }
 ```
 
-Find the latest version name in https://bintray.com/high-mobility/maven/hmkit-utils
+Find the latest version names in [mavenCentral](https://search.maven.org/search?q=g:com.high-mobility)
 
 ### Usage
 
