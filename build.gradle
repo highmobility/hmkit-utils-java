@@ -1,7 +1,7 @@
 buildscript {
-    ext.kotlinVersion = '1.4.30'
+    ext.kotlinVersion = '1.7.20'
     repositories {
-        jcenter()
+        mavenCentral()
     }
     dependencies {
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.5'
@@ -20,7 +20,7 @@ apply from: "https://raw.githubusercontent.com/tonisives/tools/master/gradle/dep
 apply from: "https://raw.githubusercontent.com/tonisives/tools/master/gradle/test-shell-logging.gradle"
 
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 compileJava {
